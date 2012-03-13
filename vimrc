@@ -146,6 +146,19 @@ set ignorecase
 " ...but only if lower case letters are used.
 set smartcase
 
+" Wrap long lines, navigate them using the j and k keys.
+setlocal wrap nolist linebreak breakat=\ 
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Automatically insert line breaks for tex files.
+au BufEnter *.tex setl tx ts=2 sw=2 fo+=2a
+
+" Soft wrap keybinding.
+command! -nargs=* Wrap set wrap linebreak nolist
+
 " Latex-Suite-specific things.
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
