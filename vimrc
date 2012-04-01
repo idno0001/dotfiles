@@ -154,13 +154,21 @@ vnoremap j gj
 vnoremap k gk
 
 " Automatically insert line breaks for tex files.
-" au BufEnter *.tex setl tx ts=2 sw=2 fo+=2a
+au BufEnter *.tex setl tx ts=2 sw=2 fo+=wa
+
+" Indent options for tex files.
+let g:tex_indent_brace = 1
+let g:tex_indent_items = 1
 
 " Soft wrap keybinding.
 command! -nargs=* Wrap set wrap linebreak nolist
 
 " Use par to format text.
 :set formatprg=par\ -w78
+
+" Line endings.
+:set fileformats=unix,dos
+:set fileformat=unix
 
 " Latex-Suite-specific things.
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
