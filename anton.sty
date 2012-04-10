@@ -1,0 +1,131 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% anton.sty %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Class file that includes all my usual LaTeX formatting options. These
+% include:
+% 1.  fouriernc fonts;
+% 2.  microtypography (microtype);
+% 3.  \set{.} for {.}, \braket{.} for <.> (braket);
+% 4.  \abs and \norm and their starred equivalents (\left \right), kind of
+%     copied from the mathtools package;
+% 5.  \includesvg[scale]{.} takes svg files, converts them to pdf_tex files if
+%     they have changed, and includes them in the same way as \includegraphics;
+% 6.  theorem environments (ntheorem);
+% 7.  enumerated lists start with Roman and then alpha numbering;
+% 8.  cleveref;
+% 9.  upright mathematical notation \upd, \upe, \upi, added support for upright
+%     greek (so one should use \uppi for the constant pi);
+% 10. frequently used symbols such as the set of natural numbers, real numbers,
+%     ... all in \mathbf{.} (because \mathbb{.} is for blackboards!).
+%
+
+\usepackage{amssymb,amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[stretch=10]{microtype}
+\usepackage{braket}
+\usepackage{upgreek}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{suffix}
+\usepackage{soul}
+\usepackage[thmmarks,amsmath]{ntheorem}
+\usepackage{cleveref}
+
+% Inkscape graphics. Compiles new diagram if svg file changes.
+% Use \includesvg to insert images (exclude file extension), with optional
+% argument that scales the image relative to the page width.
+\newcommand{\executeiffilenewer}[3]{%
+	\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+	{\pdffilemoddate{#2}}>0%
+	{\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[2][1]{%
+	\executeiffilenewer{fig/#2.svg}{fig/#2.pdf}%
+	{inkscape -z -D --file=fig/#2.svg %
+		--export-pdf=fig/#2.pdf --export-latex}%
+		\def\svgwidth{#1\columnwidth}
+		\input{fig/#2.pdf_tex}%
+}
+\graphicspath{{fig/}}
+
+% Theorem environments.
+\theorembodyfont{}
+\theoremseparator{.}
+\theoremstyle{nonumberbreak}
+\newtheorem{remarks}{Remarks}
+\theoremstyle{nonumberplain}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+%\theoremstyle{nonumberplain}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{notation}{Notation}
+\newtheorem{remark}{Remark}
+\theoremheaderfont{\it}\theorembodyfont{\upshape}
+\newtheorem{claim}{Claim}
+\theoremheaderfont{\sc}\theorembodyfont{\upshape}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem{proof}{Proof}
+
+% Redefine lists to use roman numerals.
+\setlist[enumerate,1]{label=(\roman*), ref=\roman*}
+\setlist[enumerate,2]{label=(\alph*), ref=\theenumi.\alph*}
+
+% Indent paragraphs in enumerated lists.
+\setenumerate{listparindent=\parindent}
+
+% Key words.
+\newcommand{\key}[1]{\emph{#1}}
+
+% Upright mathematical constants. For consistency, one should use \uppi for
+% the constant number pi. The starred version of \upd inserts a space before
+% the upright d and so is designed to be used in integrals.
+\DeclareSymbolFont{fouriernc}{T1}{fnc}{m}{n}
+\DeclareMathSymbol{\upd}\mathalpha{fouriernc}{`\d}
+\WithSuffix\newcommand\upd*{\ensuremath{\ \upd}}
+\DeclareMathSymbol{\upe}\mathalpha{fouriernc}{`\e}
+\DeclareMathSymbol{\upi}\mathalpha{fouriernc}{`\i}
+
+% Frequently used symbols.
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\complex}{\mathbf{C}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\naturals}{\mathbf{N}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\rationals}{\mathbf{Q}}
+\newcommand{\reals}{\mathbf{R}}
+\newcommand{\integers}{\mathbf{Z}}
+\newcommand{\join}{\vee}
+\newcommand{\bigjoin}{\bigvee}
+\DeclareMathOperator{\card}{card}
+\newcommand{\cl}[1]{\overline{#1}} % `closure'
+\DeclareMathOperator{\id}{id}
+\newcommand{\symdiff}{\bigtriangleup}
+
+% Avoids inconsistent use of notation.
+\renewcommand{\subset}{\subseteq}
+\renewcommand{\supset}{\supseteq}
+\renewcommand{\tilde}[1]{\widetilde{#1}}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+% \relmiddle is like \middle, but gives the same spacing as \mid. I don't
+% use this anymore because \Set{.} works well.
+\newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
+\newcommand{\midmid}{\relmiddle|}
+\newcommand{\seedot}{\mathrel{}\cdot\mathrel{}}
+\newcommand{\midcolon}{\,:\,}
+
+% Use \abs{.} for |.| and \norm{.} for ||.||. Use starred versions to precede
+% the delimiters with \left and \right.
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\WithSuffix\newcommand{\abs}*[1]{\left\lvert{#1}\right\rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\WithSuffix\newcommand{\norm}*[1]{\left\lVert{#1}\right\rVert}
+
