@@ -14,8 +14,14 @@
 % 9.  upright mathematical notation \upd, \upe, \upi, added support for upright
 %     greek (so one should use \uppi for the constant pi);
 % 10. frequently used symbols such as the set of natural numbers, real numbers,
-%     ... all in \mathbf{.} (because \mathbb{.} is for blackboards!).
+%     ... all in \mathbf{.} (because \mathbb{.} is for blackboards!);
+% 11. optional hyperref.
 %
+
+\newif\if@doHyperref
+\@doHyperreffalse
+\DeclareOption{hyperref}{\@doHyperreftrue}
+\ProcessOptions
 
 \usepackage{amssymb,amsmath}
 \usepackage[T1]{fontenc}
@@ -29,7 +35,9 @@
 \usepackage{color}
 \usepackage{suffix}
 \usepackage{soul}
-\usepackage{hyperref}
+\if@doHyperref
+	\usepackage[colorlinks]{hyperref}
+\fi
 \usepackage[thmmarks,amsmath]{ntheorem}
 \usepackage{cleveref}
 
@@ -98,6 +106,7 @@
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\Exp}{\mathbf{E}}
+\newcommand{\F}{\mathcal{F}}
 \newcommand{\naturals}{\mathbf{N}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\rationals}{\mathbf{Q}}
