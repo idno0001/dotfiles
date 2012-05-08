@@ -63,12 +63,12 @@
 \theoremseparator{.}
 \theoremstyle{break}
 \newtheorem{remarks}{Remarks}
-\theoremstyle{nonumberplain}
+\theoremstyle{plain}
 \newtheorem{lemma}{Lemma}
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
-%\theoremstyle{nonumberplain}
+\theoremstyle{nonumberplain}
 \newtheorem{definition}{Definition}
 \newtheorem{example}{Example}
 \newtheorem{notation}{Notation}
@@ -80,8 +80,8 @@
 \newtheorem{proof}{Proof}
 
 % Redefine lists to use roman numerals.
-\setlist[enumerate,1]{label=(\roman*), ref=\roman*}
-\setlist[enumerate,2]{label=(\alph*), ref=\theenumi.\alph*}
+\setlist[enumerate,1]{label=(\roman*), ref=(\roman*)}
+\setlist[enumerate,2]{label=(\alph*), ref=(\theenumi.\alph*)}
 
 % Indent paragraphs in enumerated lists.
 \setenumerate{listparindent=\parindent}
