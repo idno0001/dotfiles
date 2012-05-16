@@ -21,6 +21,9 @@
 \newif\if@doHyperref
 \@doHyperreffalse
 \DeclareOption{hyperref}{\@doHyperreftrue}
+\newif\if@doGlossaries
+\@doGlossariesfalse
+\DeclareOption{glossaries}{\@doGlossariestrue}
 \ProcessOptions
 
 \usepackage{amssymb,amsmath}
@@ -39,6 +42,9 @@
 	\usepackage[colorlinks]{hyperref}
 \fi
 \usepackage[thmmarks,amsmath]{ntheorem}
+\if@doGlossaries
+	\usepackage[nomain]{glossaries}
+\fi
 \usepackage{cleveref}
 
 % Inkscape graphics. Compiles new diagram if svg file changes.
@@ -61,7 +67,7 @@
 % Theorem environments.
 \theorembodyfont{}
 \theoremseparator{.}
-\theoremstyle{break}
+\theoremstyle{nonumberbreak}
 \newtheorem{remarks}{Remarks}
 \theoremstyle{plain}
 \newtheorem{lemma}{Lemma}
@@ -107,6 +113,7 @@
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\Exp}{\mathbf{E}}
 \newcommand{\F}{\mathcal{F}}
+\renewcommand{\L}{\mathcal{L}}
 \newcommand{\naturals}{\mathbf{N}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\rationals}{\mathbf{Q}}
@@ -118,6 +125,7 @@
 \newcommand{\cl}[1]{\overline{#1}} % `closure'
 \DeclareMathOperator{\id}{id}
 \newcommand{\symdiff}{\bigtriangleup}
+\newcommand{\Lip}{\mathrm{Lip}}
 
 % Avoids inconsistent use of notation.
 \renewcommand{\subset}{\subseteq}
