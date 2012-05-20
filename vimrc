@@ -164,7 +164,7 @@ let g:tex_indent_items = 1
 command! -nargs=* Wrap set wrap linebreak nolist
 
 " Use par to format text.
-:set formatprg=par\ -w78
+:set formatprg=par\ -w78q
 
 " Line endings.
 :set fileformats=unix,dos
