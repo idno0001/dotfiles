@@ -15,7 +15,7 @@
 %     greek (so one should use \uppi for the constant pi);
 % 10. frequently used symbols such as the set of natural numbers, real numbers,
 %     ... all in \mathbf{.} (because \mathbb{.} is for blackboards!);
-% 11. optional hyperref.
+% 11. optional hyperref, glossaries.
 %
 
 \newif\if@doHyperref
@@ -34,6 +34,7 @@
 \usepackage[stretch=10]{microtype}
 \usepackage{braket}
 \usepackage{upgreek}
+\usepackage{xparse}
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{suffix}
@@ -141,10 +142,28 @@
 \newcommand{\seedot}{\mathrel{}\cdot\mathrel{}}
 \newcommand{\midcolon}{\,:\,}
 
-% Use \abs{.} for |.| and \norm{.} for ||.||. Use starred versions to precede
-% the delimiters with \left and \right.
-\newcommand{\abs}[1]{\lvert #1 \rvert}
-\WithSuffix\newcommand{\abs}*[1]{\left\lvert{#1}\right\rvert}
-\newcommand{\norm}[1]{\lVert #1 \rVert}
-\WithSuffix\newcommand{\norm}*[1]{\left\lVert{#1}\right\rVert}
-
+% Various paired delimiters using xparse.
+% abs
+\NewDocumentCommand{\abs}{s O{} m}{%
+  \IfBooleanTF{#1} % starred
+    {\left\lvert#3\right\rvert}
+    {#2\lvert#3#2\rvert}
+}
+%norm
+\NewDocumentCommand{\norm}{s O{} m}{%
+  \IfBooleanTF{#1}
+    {\left\lVert#3\right\rVert}
+    {#2\lVert#3#2\rVert}
+}
+% floor
+\NewDocumentCommand{\floor}{s O{} m}{%
+  \IfBooleanTF{#1}
+    {\left\lfloor#3\right\rfloor}
+    {#2\lfloor#3#2\rfloor}
+}
+% ceil
+\NewDocumentCommand{\ceil}{s O{} m}{%
+  \IfBooleanTF{#1}
+    {\left\lceil#3\right\rceil}
+    {#2\lceil#3#2\rceil}
+}
