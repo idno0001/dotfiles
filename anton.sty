@@ -21,9 +21,12 @@
 \newif\if@doHyperref
 \@doHyperreffalse
 \DeclareOption{hyperref}{\@doHyperreftrue}
-\newif\if@doGlossaries
-\@doGlossariesfalse
-\DeclareOption{glossaries}{\@doGlossariestrue}
+\newif\if@doGlossariesNoMain
+\@doGlossariesNoMainfalse
+\DeclareOption{glossariesnomain}{\@doGlossariesNoMaintrue}
+\newif\if@doGlossariesNoNumList
+\@doGlossariesNoNumListfalse
+\DeclareOption{glossariesnonumberlist}{\@doGlossariesNoNumListtrue}
 \ProcessOptions
 
 \usepackage{amssymb,amsmath}
@@ -43,8 +46,11 @@
 	\usepackage[colorlinks]{hyperref}
 \fi
 \usepackage[thmmarks,amsmath]{ntheorem}
-\if@doGlossaries
+\if@doGlossariesNoMain
 	\usepackage[nomain]{glossaries}
+\fi
+\if@doGlossariesNoNumList
+	\usepackage[nonumberlist]{glossaries}
 \fi
 \usepackage{cleveref}
 
