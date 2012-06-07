@@ -152,24 +152,24 @@
 % abs
 \NewDocumentCommand{\abs}{s O{} m}{%
   \IfBooleanTF{#1} % starred
-    {\left\lvert#3\right\rvert}
-    {#2\lvert#3#2\rvert}
+  	{{\left\lvert#3\right\rvert}}
+    {{#2\lvert#3#2\rvert}}
 }
 %norm
 \NewDocumentCommand{\norm}{s O{} m}{%
   \IfBooleanTF{#1}
-    {\left\lVert#3\right\rVert}
-    {#2\lVert#3#2\rVert}
+  	{{\left\lVert#3\right\rVert}}
+    {{#2\lVert#3#2\rVert}}
 }
 % floor
 \NewDocumentCommand{\floor}{s O{} m}{%
   \IfBooleanTF{#1}
-    {\left\lfloor#3\right\rfloor}
-    {#2\lfloor#3#2\rfloor}
+  	{{\left\lfloor#3\right\rfloor}}
+    {{#2\lfloor#3#2\rfloor}}
 }
 % ceil
 \NewDocumentCommand{\ceil}{s O{} m}{%
   \IfBooleanTF{#1}
-    {\left\lceil#3\right\rceil}
-    {#2\lceil#3#2\rceil}
+	  {{\left\lceil#3\right\rceil}}
+    {{#2\lceil#3#2\rceil}}
 }
