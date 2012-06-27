@@ -175,6 +175,17 @@ set cole=2
 hi Conceal guibg=#3f3f3f guifg=#dcdccc
 let g:tex_conceal="adgm"
 
+" Unicode support.
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+
 " Latex-Suite-specific things.
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
