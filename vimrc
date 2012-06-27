@@ -170,6 +170,11 @@ command! -nargs=* Wrap set wrap linebreak nolist
 :set fileformats=unix,dos
 :set fileformat=unix
 
+" Conceal. Colour scheme is for Zenburn. Do not conceal (sub|super)scripts.
+set cole=2
+hi Conceal guibg=#3f3f3f guifg=#dcdccc
+let g:tex_conceal="adgm"
+
 " Latex-Suite-specific things.
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
