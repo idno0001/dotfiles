@@ -93,7 +93,7 @@ nmap <leader>v :edit $MYVIMRC<CR>
 if has('gui_running')
   set lines=55 columns=85
   if has('win32')
-    set guifont=Consolas
+    set guifont=Consolas:h9
   else
     set guifont=DejaVu\ Sans\ Mono\ 8
   endif
@@ -172,7 +172,7 @@ command! -nargs=* Wrap set wrap linebreak nolist
 
 " Conceal. Colour scheme is for Zenburn. Do not conceal (sub|super)scripts.
 set cole=2
-hi Conceal guibg=#3f3f3f guifg=#dcdccc
+hi Conceal guibg=#3f3f3f guifg=#dcdccc font='DejaVu Sans Mono'
 let g:tex_conceal="adgm"
 
 " Unicode support.
