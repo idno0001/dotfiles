@@ -95,7 +95,7 @@ if has('gui_running')
   if has('win32')
     set guifont=Consolas
   else
-    set guifont=osaka_unicode\ 9
+    set guifont=DejaVu\ Sans\ Mono\ 8
   endif
 endif
 
