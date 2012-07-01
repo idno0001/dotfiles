@@ -140,6 +140,9 @@ nnoremap <leader>g :GundoToggle<CR>
 set wildmenu
 set wildmode=list:longest
 
+" Ignore files spat out by LaTeX and friends.
+set wildignore+=*.aux,*.bbl,*.blg,*.glg,*.glo,*.ist,*.log,*.out,*.pdf,*.sbl,*.sym,*.thm,*.toc,*~,*-blx.bib,*.fdb_latexmk,*.run.xml
+
 " Ignore case sensitivity when searching
 set ignorecase
 
