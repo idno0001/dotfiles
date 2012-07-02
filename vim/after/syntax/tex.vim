@@ -8,4 +8,5 @@ syn match texMathSymbol '\\naturals\>' contained conceal cchar=N
 syn match texMathSymbol '\\reals\>' contained conceal cchar=R
 syn match texMathSymbol '\\Exp\>' contained conceal cchar=E
 syn match texMathSymbol '\\seedot\>' contained conceal cchar=·
+syn match texMathSymbol '\\ell\>' contained conceal cchar=ℓ
 
