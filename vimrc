@@ -120,10 +120,10 @@ if has('gui_running')
   if has('win32')
     "set guifont=Consolas:h9
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h8
-		let Powerline_symbols='fancy'
   else
-    set guifont=DejaVu\ Sans\ Mono\ 8
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
   endif
+	let Powerline_symbols='fancy'
 endif
 
 :colorscheme zenburn
