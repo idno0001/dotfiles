@@ -1,8 +1,33 @@
-" Use pathogen.
-call pathogen#infect()
-
 " Use vim (not vi) settings.
 set nocompatible
+filetype off
+
+if has('win32')
+	set rtp+=$VIM/vimfiles/bundle/vundle/
+else
+	set rtp+=~/.vim/bundle/vundle/
+endif
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'vim-scripts/Smart-Tabs'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Bundle 'sjl/gundo.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'jnurmine/Zenburn'
+Bundle 'vim-scripts/tex.vim--Tanzler'
+Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-commentary'
+Bundle 'vim-scripts/matchit.zip'
+
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
