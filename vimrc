@@ -27,7 +27,7 @@ Bundle 'vim-scripts/tex.vim--Tanzler'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-commentary'
 Bundle 'vim-scripts/matchit.zip'
-
+Bundle 'Lokaltog/vim-powerline'
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -118,7 +118,9 @@ nmap <leader>v :edit $MYVIMRC<CR>
 if has('gui_running')
   set lines=55 columns=85
   if has('win32')
-    set guifont=Consolas:h9
+    "set guifont=Consolas:h9
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h8
+		let Powerline_symbols='fancy'
   else
     set guifont=DejaVu\ Sans\ Mono\ 8
   endif
