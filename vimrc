@@ -216,6 +216,8 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
+set laststatus=2
+
 " Latex-Suite-specific things.
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
