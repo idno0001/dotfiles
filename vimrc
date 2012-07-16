@@ -118,12 +118,14 @@ nmap <leader>v :edit $MYVIMRC<CR>
 if has('gui_running')
   set lines=55 columns=85
   if has('win32')
-    "set guifont=Consolas:h9
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h8
   else
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
   endif
 	let Powerline_symbols='fancy'
+	
+	"Hide the toolbar in gvim.
+	set guioptions-=T
 endif
 
 :colorscheme zenburn
