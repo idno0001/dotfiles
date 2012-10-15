@@ -134,6 +134,12 @@ endif
 " Use tabs for indentation only, width = 4.
 :set noet ci pi sts=0 sw=2 ts=2
 
+" Use SuperRetab to convert spaces to tabs (inverse of standard vim retab).
+" Usage: Visually select the lines that you want to retab, then enter
+" :'<,'> SuperRetab 2
+" to replace all two-space indents with tab characters.
+:command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
+
 " Line numbers, highlight current line.
 :set number
 :set cursorline
