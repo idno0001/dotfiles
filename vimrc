@@ -217,8 +217,8 @@ command! -nargs=* Wrap set wrap linebreak nolist
 :set formatprg=par\ -w78q
 
 " Line endings.
-:set fileformats=unix,dos
 :set fileformat=unix
+:set fileformats=unix,dos
 
 " Conceal. Colour scheme is for Zenburn. Do not conceal (sub|super)scripts.
 set cole=2
@@ -236,7 +236,20 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
+" Always show status line.
 set laststatus=2
+
+" Remap ; to :.
+nore ; :
+nore , ;
+
+" Center searches.
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 " Latex-Suite-specific things.
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
@@ -249,7 +262,7 @@ if has('win32')
 endif
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
+" search in a single file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
 
