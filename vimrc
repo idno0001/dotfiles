@@ -132,7 +132,7 @@ endif
 :colorscheme zenburn
 
 " Use tabs for indentation only, width = 2.
-:set et ci pi sts=0 sw=2 ts=2
+:set et ci pi sts=2 sw=2 ts=2
 
 " Use SuperRetab to convert spaces to tabs (inverse of standard vim retab).
 " Usage: Visually select the lines that you want to retab, then enter
