@@ -39,7 +39,6 @@
 \usepackage{enumitem}
 \usepackage[stretch=10]{microtype}
 \usepackage{braket}
-\usepackage{bm} % bold math
 \usepackage{upgreek}
 \usepackage{xparse}
 \usepackage{graphicx}
@@ -157,7 +156,7 @@
 \renewcommand{\supset}{\supseteq}
 \renewcommand{\tilde}[1]{\widetilde{#1}}
 
-\renewcommand{\vec}[1]{\bm{#1}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
 
 % \relmiddle is like \middle, but gives the same spacing as \mid. I don't
 % use this anymore because \Set{.} works well.
