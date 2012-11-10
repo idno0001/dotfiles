@@ -15,15 +15,27 @@
 %     greek (so one should use \uppi for the constant pi);
 % 10. frequently used symbols such as the set of natural numbers, real numbers,
 %     ... all in \mathbf{.} (because \mathbb{.} is for blackboards!);
-% 11. optional hyperref, glossaries.
+% 11. optional hyperref, glossaries;
+% 12. optional timestamping.
 %
 
+% Default font is New Century Schoolbook. The [cm] option drops back to cms.
+\newif\if@doFouriernc
+\@doFouriernctrue
+\DeclareOption{cm}{\@doFourierncfalse}
+
+% [timestamp] adds the compile time to the (fancy) footer of the document.
 \newif\if@doTimestamp
 \@doTimestampfalse
 \DeclareOption{timestamp}{\@doTimestamptrue}
+
+% Add [hyperref] support.
 \newif\if@doHyperref
 \@doHyperreffalse
 \DeclareOption{hyperref}{\@doHyperreftrue}
+
+% Add the glossaries package. [glossariesnomain] is equivalent to the [nomain]
+% option; [glossariesnonumberlist] is equivalent to th [nonumberlist] option.
 \newif\if@doGlossariesNoMain
 \@doGlossariesNoMainfalse
 \DeclareOption{glossariesnomain}{\@doGlossariesNoMaintrue}
@@ -34,7 +46,10 @@
 
 \usepackage{amssymb,amsmath}
 \usepackage[T1]{fontenc}
-\usepackage{fouriernc}
+
+\if@doFouriernc
+  \usepackage{fouriernc}
+\fi
 \usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[stretch=10]{microtype}
@@ -121,11 +136,15 @@
 % Upright mathematical constants. For consistency, one should use \uppi for
 % the constant number pi. The starred version of \upd inserts a space before
 % the upright d and so is designed to be used in integrals.
-\DeclareSymbolFont{fouriernc}{T1}{fnc}{m}{n}
-\DeclareMathSymbol{\upd}\mathalpha{fouriernc}{`\d}
+\if@doFouriernc
+  \DeclareSymbolFont{symbolfont}{T1}{fnc}{m}{n}
+\else
+  \DeclareSymbolFont{symbolfont}{T1}{cmr}{m}{n}
+\fi 
+\DeclareMathSymbol{\upd}\mathalpha{symbolfont}{`\d}
 \WithSuffix\newcommand\upd*{\ensuremath{\ \upd}}
-\DeclareMathSymbol{\upe}\mathalpha{fouriernc}{`\e}
-\DeclareMathSymbol{\upi}\mathalpha{fouriernc}{`\i}
+\DeclareMathSymbol{\upe}\mathalpha{symbolfont}{`\e}
+\DeclareMathSymbol{\upi}\mathalpha{symbolfont}{`\i}
 
 % Frequently used symbols.
 \newcommand{\A}{\mathcal{A}}
