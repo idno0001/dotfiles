@@ -239,10 +239,6 @@ endif
 " Always show status line.
 set laststatus=2
 
-" Remap ; to :.
-nore ; :
-nore , ;
-
 " Center searches.
 nnoremap n nzz
 nnoremap N Nzz
