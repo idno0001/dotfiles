@@ -30,6 +30,7 @@ Bundle 'vim-scripts/matchit.zip'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/Rename'
 Bundle 'spiiph/vim-space'
+Bundle 'tpope/vim-surround'
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
