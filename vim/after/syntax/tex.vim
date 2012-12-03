@@ -12,4 +12,6 @@ syn match texMathSymbol '\\seedot\>' contained conceal cchar=·
 syn match texMathSymbol '\\ell\>' contained conceal cchar=ℓ
 syn match texMathSymbol '\\specrad\>' contained conceal cchar=ρ
 syn match texMathSymbol '\\oponros\>' contained conceal cchar=Q
+syn match texMathSymbol '\\colon\>' contained conceal cchar=:
+syn match texMathSymbol '\\colonequals\>' contained conceal cchar=≔
 

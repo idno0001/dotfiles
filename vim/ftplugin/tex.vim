@@ -7,4 +7,6 @@ call IMAP('\sigmaa', '$\sigma$-algebra', 'tex')
 call IMAP('<=', '\le', 'tex')
 call IMAP('>=', '\ge', 'tex')
 call IMAP('!=', '\ne', 'tex')
+call IMAP('::', '\colon', 'tex')
+call IMAP(':=', '\colonequals', 'tex')
 
