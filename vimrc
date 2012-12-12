@@ -275,3 +275,11 @@ filetype indent on
 " Stop autofolding in Latex-Suite.
 let g:Tex_AutoFolding = 0
 
+" Default to PDF.
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+" Use okular for viewing things.
+let g:Tex_ViewRule_ps = 'evince'
+let g:Tex_ViewRule_pdf = 'evince'
+let g:Tex_ViewRule_dvi = 'evince'
+
