@@ -269,6 +269,9 @@ set grepprg=grep\ -nH\ $*
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
 " Stop autofolding in Latex-Suite.
 let g:Tex_AutoFolding = 0
 

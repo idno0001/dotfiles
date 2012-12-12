@@ -1,3 +1,5 @@
+set iskeyword+=:
+
 call IMAP('IFF', 'if and only if', 'tex')
 call IMAP('MPT', 'measure-preserving transformation', 'tex')
 call IMAP('NN', 'neural network', 'tex')
