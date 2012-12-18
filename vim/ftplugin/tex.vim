@@ -12,3 +12,7 @@ call IMAP('!=', '\ne', 'tex')
 call IMAP('::', '\colon', 'tex')
 call IMAP(':=', '\colonequals', 'tex')
 
+call IMAP('Asterisque', "Ast\\'{e}risque", 'tex')
+call IMAP('Herve', "Herv\\'{e}", 'tex')
+call IMAP('Peigne', "Peign\\'{e}", 'tex')
+
