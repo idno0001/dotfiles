@@ -1,0 +1,10 @@
+"hg6880
+
+loadplugins '\.(js|penta)$'
+group user
+set guioptions=bCrsBN
+set hlfind
+set passkeys=mail.google.com:'!#*+-./<C-Down><C-s><Enter>?INU[]acefjklmnopqrsuvxyz',*a,*n,*r,*s,*t,*u,ga,gc,gd,gi,gl,gs,gt,yo
+set strictfocus=google.com:laissez-faire,'chrome:*':laissez-faire,*:moderate
+
+" vim: set ft=pentadactyl:
