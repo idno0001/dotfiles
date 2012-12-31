@@ -31,6 +31,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/Rename'
 Bundle 'spiiph/vim-space'
 Bundle 'tpope/vim-surround'
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -142,27 +143,8 @@ endif
 " to replace all two-space indents with tab characters.
 :command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 
-" Use relative line numbering, highlight current line.
-:set relativenumber
+" Line numbers, highlight current line.
 :set cursorline
-
-" C-n toggles between relative and absolute line numbering.
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
-
-" Only use relative line numbering when vim is focussed.
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
-
-" Use absolute line numbering in insert mode.
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
 
 " Disable warnings regarding modified buffers when switching buffers.
 :set hidden
