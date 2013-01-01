@@ -132,22 +132,22 @@ if has('gui_running')
 	set guioptions-=T
 endif
 
-:colorscheme zenburn
+colorscheme zenburn
 
 " Use tabs for indentation only, width = 2.
-:set et ci pi sts=2 sw=2 ts=2
+set et ci pi sts=2 sw=2 ts=2
 
 " Use SuperRetab to convert spaces to tabs (inverse of standard vim retab).
 " Usage: Visually select the lines that you want to retab, then enter
 " :'<,'> SuperRetab 2
 " to replace all two-space indents with tab characters.
-:command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
+command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 
 " Line numbers, highlight current line.
-:set cursorline
+set cursorline
 
 " Disable warnings regarding modified buffers when switching buffers.
-:set hidden
+set hidden
 
 " %% expands the directory of the current file. In addition, we have mappings
 " to open files relative to the current file: ew (open in window), es (open in
@@ -204,7 +204,6 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-
 " Automatically insert line breaks for tex files.
 au BufEnter *.tex setl tx ts=2 sw=2 fo+=wa
 
@@ -216,11 +215,11 @@ let g:tex_indent_items = 1
 command! -nargs=* Wrap set wrap linebreak nolist
 
 " Use par to format text.
-:set formatprg=par\ -w78q
+set formatprg=par\ -w78q
 
 " Line endings.
-:set fileformat=unix
-:set fileformats=unix,dos
+set fileformat=unix
+set fileformats=unix,dos
 
 " Conceal. Colour scheme is for Zenburn. Do not conceal (sub|super)scripts.
 set cole=2
