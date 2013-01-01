@@ -60,12 +60,26 @@ filetype indent on
 let g:Tex_AutoFolding = 0
 
 " Default to PDF.
-let g:Tex_DefaultTargetFormat = 'pdf'
+" let g:Tex_DefaultTargetFormat = 'pdf'
 
 " Use okular for viewing things.
-let g:Tex_ViewRule_ps = 'evince'
-let g:Tex_ViewRule_pdf = 'evince'
-let g:Tex_ViewRule_dvi = 'evince'
+" let g:Tex_ViewRule_ps = 'evince'
+" let g:Tex_ViewRule_pdf = 'evince'
+" let g:Tex_ViewRule_dvi = 'evince'
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_MultipleCompileFormats = 'dvi,pdf'
+let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -shell-escape -interaction=nonstopmode $*'
+
+if has('win32')
+  let g:Tex_ViewRule_pdf = 'SumatraPDF -reuse-instance'
+else
+  if executable('evince')
+    let g:Tex_ViewRule_ps = 'evince'
+    let g:Tex_ViewRule_pdf = 'evince'
+    let g:Tex_ViewRule_dvi = 'evince'
+  endif
+endif
+
 
 " End of Latex-Suite-specific things.
 
