@@ -1,5 +1,17 @@
+" Word wrapping, tab width, etc.
+set tx ts=2 sw=2 fo+=wa
+ 
+" Indent options for tex files.
+let g:tex_indent_brace = 1
+let g:tex_indent_items = 1
+
+" Using colons as a keyword so that tab completion is slick.
 set iskeyword+=:
 
+" Do not conceal (sub|super)scripts.
+let g:tex_conceal="adgm"
+
+" Various macros.
 call IMAP('IFF', 'if and only if', 'tex')
 call IMAP('MPT', 'measure-preserving transformation', 'tex')
 call IMAP('NN', 'neural network', 'tex')

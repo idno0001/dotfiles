@@ -33,6 +33,42 @@ Bundle 'spiiph/vim-space'
 Bundle 'tpope/vim-surround'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 
+" Latex-Suite-specific things.
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
+
+" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+" can be called correctly.
+if has('win32')
+  set shellslash
+endif
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a single file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+" Stop autofolding in Latex-Suite.
+let g:Tex_AutoFolding = 0
+
+" Default to PDF.
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+" Use okular for viewing things.
+let g:Tex_ViewRule_ps = 'evince'
+let g:Tex_ViewRule_pdf = 'evince'
+let g:Tex_ViewRule_dvi = 'evince'
+
+" End of Latex-Suite-specific things.
+
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -205,11 +241,11 @@ imap <left> <nop>
 imap <right> <nop>
 
 " Automatically insert line breaks for tex files.
-au BufEnter *.tex setl tx ts=2 sw=2 fo+=wa
+" au BufEnter *.tex setl tx ts=2 sw=2 fo+=wa
 
 " Indent options for tex files.
-let g:tex_indent_brace = 1
-let g:tex_indent_items = 1
+" let g:tex_indent_brace = 1
+" let g:tex_indent_items = 1
 
 " Soft wrap keybinding.
 command! -nargs=* Wrap set wrap linebreak nolist
@@ -224,7 +260,7 @@ set fileformats=unix,dos
 " Conceal. Colour scheme is for Zenburn. Do not conceal (sub|super)scripts.
 set cole=2
 hi Conceal guibg=#3f3f3f guifg=#dcdccc font='DejaVu Sans Mono'
-let g:tex_conceal="adgm"
+" let g:tex_conceal="adgm"
 
 " Unicode support.
 if has("multi_byte")
@@ -247,38 +283,4 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
-
-" Latex-Suite-specific things.
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
-
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-if has('win32')
-  set shellslash
-endif
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a single file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-
-" Stop autofolding in Latex-Suite.
-let g:Tex_AutoFolding = 0
-
-" Default to PDF.
-let g:Tex_DefaultTargetFormat = 'pdf'
-
-" Use okular for viewing things.
-let g:Tex_ViewRule_ps = 'evince'
-let g:Tex_ViewRule_pdf = 'evince'
-let g:Tex_ViewRule_dvi = 'evince'
 
