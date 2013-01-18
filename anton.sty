@@ -16,7 +16,10 @@
 % 10. frequently used symbols such as the set of natural numbers, real numbers,
 %     ... all in \mathbf{.} (because \mathbb{.} is for blackboards!);
 % 11. optional hyperref, glossaries;
-% 12. optional timestamping.
+% 12. optional timestamping;
+% 13. a custom `notes' environment;
+% 14. bm for nicer bold mathematical symbols;
+% 15. optional biblatex.
 %
 
 % Default font is New Century Schoolbook. The [cm] option drops back to cms.
@@ -42,6 +45,12 @@
 \newif\if@doGlossariesNoNumList
 \@doGlossariesNoNumListfalse
 \DeclareOption{glossariesnonumberlist}{\@doGlossariesNoNumListtrue}
+
+% Add [biblatex] support.
+\newif\if@doBiblatex
+\@doBiblatexfalse
+\DeclareOption{biblatex}{\@doBiblatextrue}
+
 \ProcessOptions
 
 \usepackage{amssymb,amsmath}
@@ -56,6 +65,9 @@
 \usepackage{braket}
 \usepackage{upgreek}
 \usepackage{xparse}
+\usepackage{environ}
+\usepackage{tikz} % For own notes.
+\usepackage{bm}   % For own notes.
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{suffix}
@@ -73,16 +85,24 @@
   \rfoot{\texttt{Modified on \today\ at \currenttime.}}
 \fi
 
+\if@doBiblatex
+  \usepackage[backend=bibtex8,bibstyle=alphabetic,citestyle=alphabetic-verb,firstinits=true,maxnames=4,doi=false,isbn=false,url=false]{biblatex}
+\fi
+
 \if@doHyperref
 	\usepackage[colorlinks]{hyperref}
 \fi
+
 \usepackage[thmmarks,amsmath]{ntheorem}
+
 \if@doGlossariesNoMain
 	\usepackage[nomain]{glossaries}
 \fi
 \if@doGlossariesNoNumList
 	\usepackage[nonumberlist]{glossaries}
 \fi
+
+\usepackage[british]{babel}
 \usepackage{cleveref}
 
 % Inkscape graphics. Compiles new diagram if svg file changes.
@@ -148,6 +168,7 @@
 \DeclareMathSymbol{\upi}\mathalpha{symbolfont}{`\i}
 
 % Frequently used symbols.
+\newcommand{\1}{\ensuremath{\mathbf{1}}}
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\complexes}{\mathbf{C}}
@@ -170,6 +191,7 @@
 \newcommand{\symdiff}{\bigtriangleup}
 \newcommand{\Lip}{\mathrm{Lip}}
 \DeclareMathOperator{\var}{var} % variation of a function
+\newcommand{\ft}[1]{\ensuremath{\hat{#1}}} % Fourier transform
 
 % Avoids inconsistent use of notation.
 \renewcommand{\subset}{\subseteq}
@@ -221,4 +243,17 @@
 
 % Labels for relation symbols.
 \newcommand{\refrel}[2]{\ensuremath{\stackrel{\text{#1}}}{#2}}
+
+% Environment for own notes.
+\NewEnviron{notes}{
+\par\noindent
+\begin{tikzpicture}
+\node[rectangle,minimum width=1.00\textwidth] (m) 
+{\begin{minipage}{0.90\textwidth}\textbf{Notes.} \BODY\end{minipage}};
+\draw[dashed] (m.south west) rectangle (m.north east);
+\end{tikzpicture}
+}
+
+% Change horrible default heading style.
+\setkomafont{disposition}{\normalfont\bfseries}
 
