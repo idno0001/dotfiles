@@ -229,7 +229,7 @@ set wildmenu
 set wildmode=list:longest
 
 " Ignore files spat out by LaTeX and friends.
-set wildignore+=*.aux,*.bbl,*.blg,*.glg,*.glo,*.gls,*.ist,*.log,*.out,*.pdf,*.sbl,*.sym,*.thm,*.toc,*~,*-blx.bib,*.fdb_latexmk,*.run.xml
+set wildignore+=*.aux,*.bbl,*.blg,*.fls,*.glg,*.glo,*.gls,*.ist,*.log,*.out,*.pdf,*.sbl,*.sym,*.thm,*.toc,*~,*-blx.bib,*.fdb_latexmk,*.run.xml
 
 " Ignore case sensitivity when searching
 set ignorecase
