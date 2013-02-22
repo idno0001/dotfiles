@@ -59,5 +59,5 @@ let g:Tex_Env_figure = "\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includes
 let g:Tex_Env_equation = "\\begin{equation} \\label{eqn:<++>}\<CR><++>\<CR>\\end{equation}"
 
 " Compile on save.
-au BufWritePost *.tex silent call Tex_RunLaTeX()
+" au BufWritePost *.tex silent call Tex_RunLaTeX()
 
