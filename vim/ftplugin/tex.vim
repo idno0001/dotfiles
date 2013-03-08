@@ -52,12 +52,11 @@ call IMAP('Herve', "Herv\\'{e}", 'tex')
 call IMAP('Hoelder', 'H\"{o}lder', 'tex')
 call IMAP('Peigne', "Peign\\'{e}", 'tex')
 
+call IMAP('vc', '\vec{<++>}<++>', 'tex')
+
 " Defining and redefining various environments.
 let g:Tex_Env_lemma = "\\begin{lemma} \\label{lem<++>}\<CR><++>\<CR>\\end{lemma}"
 let g:Tex_Env_theorem = "\\begin{theorem} \\label{thm:<++>}\<CR><++>\<CR>\\end{theorem}"
 let g:Tex_Env_figure = "\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includesvg[<+width+>]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>"
 let g:Tex_Env_equation = "\\begin{equation} \\label{eqn:<++>}\<CR><++>\<CR>\\end{equation}"
-
-" Compile on save.
-" au BufWritePost *.tex silent call Tex_RunLaTeX()
 
