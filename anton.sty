@@ -32,6 +32,12 @@
 \@doTimestampfalse
 \DeclareOption{timestamp}{\@doTimestamptrue}
 
+% [gitstamp] adds the time of the most recent commit to the (fancy) footer of 
+% the document.
+\newif\if@doGitstamp
+\@doGitstampfalse
+\DeclareOption{gitstamp}{\@doGitstamptrue}
+
 % Add [hyperref] support.
 \newif\if@doHyperref
 \@doHyperreffalse
@@ -74,7 +80,20 @@
 \usepackage{soul}
 \usepackage{colonequals}
 
+\if@doBiblatex
+  \usepackage[backend=bibtex8,bibstyle=alphabetic,citestyle=alphabetic-verb,firstinits=true,maxnames=4,doi=false,isbn=false,url=false]{biblatex}
+\fi
+
+% Normal timestamping or git timestamping.
+\newif\ifstamp
 \if@doTimestamp
+  \stamptrue
+\fi
+\if@doGitstamp
+  \stamptrue
+\fi
+
+\ifstamp
   \usepackage{fancyhdr}
   \usepackage[yyyymmdd,hhmmss]{datetime}
   \pagestyle{fancy}
@@ -82,11 +101,34 @@
   \renewcommand{\headrulewidth}{0pt}
   \lhead{\nouppercase{\textbf{\rightmark}}}
   \rhead{\textbf{\thepage}}
-  \rfoot{\texttt{Modified on \today\ at \currenttime.}}
-\fi
-
-\if@doBiblatex
-  \usepackage[backend=bibtex8,bibstyle=alphabetic,citestyle=alphabetic-verb,firstinits=true,maxnames=4,doi=false,isbn=false,url=false]{biblatex}
+  \if@doTimestamp
+    \rfoot{\texttt{Modified on \today\ at \currenttime.}}
+  \fi
+  \if@doGitstamp
+    \input{github.tex}%
+    \makeatletter
+    % Extract the commit hash and date to a temporary file.
+    \immediate\write18{git log -1 --format="\@percentchar H" > \jobname.temp}%
+    \immediate\write18{git log -1 --date=rfc --format="\@percentchar ad" >> 
+    \jobname.temp}%
+    % Read it back in!
+    \newread\reader%
+    \openin\reader=\jobname.temp%
+    % Ignore newline characters when reading from the file.
+    \advance\endlinechar \@M
+    \read\reader to \ghash%
+    \read\reader to \gtime%
+    % Make these variables global.
+    \global\let\githash\ghash%
+    \global\let\gittime\gtime%
+    % Revert everything and clean up.
+    \advance\endlinechar -\@M
+    \closein\reader%
+    \immediate\write18{rm -f -- '\jobname.temp'}%
+    \lfoot{\GitHub{\jobname.tex}{\githash}}%
+    \rfoot{\gittime}%
+    \makeatother
+  \fi
 \fi
 
 \if@doHyperref
