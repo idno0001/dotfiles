@@ -1,0 +1,31 @@
+% https://gist.github.com/dwilding/3079154/
+\usepackage{xstring}
+\usepackage[colorlinks]{hyperref}
+ 
+\newcommand\GitHub[3][]{%
+\def\linearg{#1--}%
+\StrBefore{\linearg}{--}[\linefirst]%
+\IfInteger{\linefirst}{%
+\StrBetween[1,2]{\linearg}{--}{--}[\linesecond]%
+\IfInteger{\linesecond}{%
+\def\linefrag{\#L\linefirst-\linesecond}%
+\def\linetext{, lines \linefirst--\linesecond}%
+}{%
+\def\linefrag{\#L\linefirst}%
+\def\linetext{, line \linefirst}%
+}%
+}{%
+\def\linefrag{}%
+\def\linetext{}%
+}%
+\href{\GitHubProject/blob/#3/#2\linefrag}{\texttt{#2}}
+(\href{\GitHubProject/tree/#3}{commit \texttt{\StrLeft{#3}{10}}}\linetext)%
+}
+ 
+% \newcommand\GitHubProject{https://github.com/username/project}
+ 
+% Usage:
+% \GitHub{<file>}{<sha>}
+% \GitHub[<line>]{<file>}{<sha>}
+% \GitHub[<line>--<line>]{<file>}{<sha>}
+
