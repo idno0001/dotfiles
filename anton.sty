@@ -124,7 +124,7 @@
     % Revert everything and clean up.
     \advance\endlinechar -\@M
     \closein\reader%
-    \immediate\write18{rm -f -- '\jobname.temp'}%
+    % \immediate\write18{rm -f -- '\jobname.temp'}%
     \lfoot{\GitHub{\jobname.tex}{\githash}}%
     \rfoot{\gittime}%
     \makeatother
