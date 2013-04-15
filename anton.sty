@@ -32,11 +32,11 @@
 \@doTimestampfalse
 \DeclareOption{timestamp}{\@doTimestamptrue}
 
-% [gitstamp] adds the time of the most recent commit to the (fancy) footer of 
+% [citegit] adds the time of the most recent commit to the (fancy) footer of 
 % the document.
-\newif\if@doGitstamp
-\@doGitstampfalse
-\DeclareOption{gitstamp}{\@doGitstamptrue}
+\newif\if@doCitegit
+\@doCitegitfalse
+\DeclareOption{citegit}{\@doCitegittrue}
 
 % Add [hyperref] support.
 \newif\if@doHyperref
@@ -89,8 +89,12 @@
 \if@doTimestamp
   \stamptrue
 \fi
-\if@doGitstamp
+\if@doCitegit
   \stamptrue
+\fi
+
+\if@doHyperref
+  \usepackage[colorlinks]{hyperref}
 \fi
 
 \ifstamp
@@ -104,35 +108,11 @@
   \if@doTimestamp
     \rfoot{\texttt{Modified on \today\ at \currenttime.}}
   \fi
-  \if@doGitstamp
-    \input{github.tex}%
-    \makeatletter
-    % Extract the commit hash and date to a temporary file.
-    \immediate\write18{git log -1 --format="\@percentchar H" > \jobname.temp}%
-    \immediate\write18{git log -1 --date=rfc --format="\@percentchar ad" >> 
-    \jobname.temp}%
-    % Read it back in!
-    \newread\reader%
-    \openin\reader=\jobname.temp%
-    % Ignore newline characters when reading from the file.
-    \advance\endlinechar \@M
-    \read\reader to \ghash%
-    \read\reader to \gtime%
-    % Make these variables global.
-    \global\let\githash\ghash%
-    \global\let\gittime\gtime%
-    % Revert everything and clean up.
-    \advance\endlinechar -\@M
-    \closein\reader%
-    % \immediate\write18{rm -f -- '\jobname.temp'}%
-    \lfoot{\GitHub{\jobname.tex}{\githash}}%
-    \rfoot{\gittime}%
-    \makeatother
+  \if@doCitegit
+    \usepackage{citegit}
+    \lfoot{\citegit[\jobname.tex]{\githash}}%
+    \rfoot{\gitdate}%
   \fi
-\fi
-
-\if@doHyperref
-	\usepackage[colorlinks]{hyperref}
 \fi
 
 \usepackage[thmmarks,amsmath]{ntheorem}
