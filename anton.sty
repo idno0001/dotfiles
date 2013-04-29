@@ -277,6 +277,10 @@
 \end{tikzpicture}
 }
 
-% Change horrible default heading style.
-\setkomafont{disposition}{\normalfont\bfseries}
+% Change horrible default heading style for KOMA document classes.
+\makeatletter
+\@ifundefined{KOMAClassName}%
+  {}%
+  {\setkomafont{disposition}{\normalfont\bfseries}}%
+\makeatother
 

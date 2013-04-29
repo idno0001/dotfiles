@@ -16,7 +16,6 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'fholgado/minibufexpl.vim'
 Bundle 'vim-scripts/Smart-Tabs'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
@@ -178,8 +177,9 @@ if has('gui_running')
   endif
 	let Powerline_symbols='fancy'
 	
-	"Hide the toolbar in gvim.
+	"Hide the toolbar and menu bar in gvim.
 	set guioptions-=T
+  set guioptions-=m
 endif
 
 colorscheme zenburn
