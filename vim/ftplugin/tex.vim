@@ -60,3 +60,6 @@ let g:Tex_Env_theorem = "\\begin{theorem} \\label{thm:<++>}\<CR><++>\<CR>\\end{t
 let g:Tex_Env_figure = "\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includesvg[<+width+>]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>"
 let g:Tex_Env_equation = "\\begin{equation} \\label{eqn:<++>}\<CR><++>\<CR>\\end{equation}<++>"
 
+" Delete a surrounding attribute/macro.
+nmap <silent> dsa ds}dF\
+
