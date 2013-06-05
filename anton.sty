@@ -138,8 +138,7 @@
     \tikz[overlay,remember picture]%
     {%
       \node at ($(current page.west)+(1.5,0)$) [rotate=90] {\Huge\textcolor{gray}{%
-      %\citegit[\jobname.tex]{\githash}
-      \timestamp}};%
+      \citegit[\jobname.tex]{\githash} \quad \timestamp}};%
     }%
   }
   \fi
