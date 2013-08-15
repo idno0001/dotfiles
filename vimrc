@@ -196,6 +196,7 @@ command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 
 " Line numbers, highlight current line.
 set cursorline
+set number
 
 " Disable warnings regarding modified buffers when switching buffers.
 set hidden
