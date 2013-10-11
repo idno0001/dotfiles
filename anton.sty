@@ -308,7 +308,9 @@
 \makeatletter
 \@ifundefined{KOMAClassName}%
   {}%
-  {\setkomafont{disposition}{\normalfont\bfseries}}%
+  {\addtokomafont{disposition}{\rmfamily}
+  \renewcommand{\descfont}{\rmfamily\bfseries}
+}%
 \makeatother
 
 % \ot for \leftarrow.
