@@ -105,11 +105,20 @@
   \usepackage[yyyymmdd,hhmmss]{datetime}
   \renewcommand{\dateseparator}{-}
   
-  % Get the timezone by using the method described at
+  % Get the time zone by using the method described at
   % http://tex.stackexchange.com/questions/8612/write-date-time-and-time-zone/14216#14216
+  \@namedef{timezoneZ}{+0000}
   \def\grabtimezone #1#2#3#4#5#6#7#8#9{\grabtimezoneB}
   \def\grabtimezoneB #1#2#3#4#5#6#7{\grabtimezoneC}
-  \def\grabtimezoneC #1#2'#3'{#1#2#3}
+  
+  % Check if the first character of the time zone string is 'Z'. If it is, 
+  % print '+0000' (for GMT/UTC); otherwise print the whole time zone string.
+  \def\grabtimezoneC #1{%
+    \@ifundefined{timezone#1}%
+    {#1\grabtimezoneD}%
+    {\@nameuse{timezone#1}}%
+  }
+  \def\grabtimezoneD #1'#2'{#1#2}
   \def\timezone{\expandafter \grabtimezone\pdfcreationdate}
 
   \pagestyle{fancy}
@@ -127,7 +136,7 @@
     \ifclean{%
       \newcommand{\timestamp}{\gitdate}%
     }{
-      \newcommand{\timestamp}{\today\ \currenttime\ \timezone *}%
+      \newcommand{\timestamp}{\today\ \currenttime\ \timezone*}%
     }
     \rfoot{\timestamp}%
   \fi
