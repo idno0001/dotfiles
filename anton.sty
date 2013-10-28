@@ -82,6 +82,9 @@
 
 \if@doBiblatex
   \usepackage[backend=bibtex8,bibstyle=alphabetic,citestyle=alphabetic-verb,firstinits=true,maxnames=4,doi=false,isbn=false,url=false]{biblatex}
+  
+  % Delimit multiple citations with commas.
+  \renewcommand*{\multicitedelim}{\addcomma\space}
 \fi
 
 % Normal timestamping or git timestamping.
