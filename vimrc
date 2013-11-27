@@ -135,6 +135,11 @@ if has("autocmd")
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
+  
+  " Use text width of 70 for muttator and various embellishments.
+  autocmd BufRead mutt-ator-mail* setlocal textwidth=70
+  autocmd BufRead mutt-ator-mail* set formatprg=par\ -w70q
+  autocmd BufRead mutt-ator-mail* set fo+=wan
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -166,7 +171,7 @@ endif
 let mapleader = ","
 
 " Map `,v' to open the .vimrc file in a new tab.
-nmap <leader>v :edit $MYVIMRC<CR>
+nmap <leader>v :tabedit $MYVIMRC<CR>
 
 " Font, window size and colour scheme.
 if has('gui_running')
