@@ -140,6 +140,15 @@ if has("autocmd")
   autocmd BufRead mutt-ator-mail* setlocal textwidth=70
   autocmd BufRead mutt-ator-mail* set formatprg=par\ -w70q
   autocmd BufRead mutt-ator-mail* set fo+=wan
+  
+  " Use text width of 70 for Gmail when using pentadactyl.
+  autocmd BufRead pentadactyl.mail.google.com.txt* setlocal textwidth=70
+  autocmd BufRead pentadactyl.mail.google.com.txt* set formatprg=par\ -w70q
+  autocmd BufRead pentadactyl.mail.google.com.txt* set fo+=wan
+  
+  " " Fix Gmail's new compose experience: make plain text *plain*.
+  " autocmd BufRead pentadactyl.mail.google.com.txt* %s/<br>/\r/g
+  " autocmd BufWriteCmd pentadactyl.mail.google.com.txt* %s/\n/<br>/g
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
