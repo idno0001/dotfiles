@@ -22,3 +22,6 @@ set show-all-if-ambiguous on
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on
 
+# Binds C-e C-w to kill words backwords, treating slashes as boundaries.
+"\C-e\C-w": unix-filename-rubout
+
