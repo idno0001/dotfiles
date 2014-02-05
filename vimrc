@@ -3,9 +3,9 @@ set nocompatible
 filetype off
 
 if has('win32')
-	set rtp+=$VIM/vimfiles/bundle/vundle/
+  set rtp+=$VIM/vimfiles/bundle/vundle/
 else
-	set rtp+=~/.vim/bundle/vundle/
+  set rtp+=~/.vim/bundle/vundle/
 endif
 call vundle#rc()
 
@@ -26,7 +26,6 @@ Bundle 'vim-scripts/tex.vim--Tanzler'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-commentary'
 Bundle 'vim-scripts/matchit.zip'
-" Bundle 'Lokaltog/vim-powerline'
 Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/Rename'
 Bundle 'spiiph/vim-space'
@@ -92,15 +91,15 @@ endif
 set backspace=indent,eol,start
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup    " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup    " keep a backup file
   set backupcopy=yes    " copy the old file and write to the current file
 endif
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=50    " keep 50 lines of command line history
+set ruler   " show the cursor position all the time
+set showcmd   " display incomplete commands
+set incsearch   " do incremental searching
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -165,7 +164,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent    " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -191,10 +190,10 @@ if has('gui_running')
   else
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
   endif
-	let Powerline_symbols='fancy'
-	
-	"Hide the toolbar and menu bar in gvim.
-	set guioptions-=T
+  let Powerline_symbols='fancy'
+  
+  "Hide the toolbar and menu bar in gvim.
+  set guioptions-=T
   set guioptions-=m
 endif
 
@@ -315,9 +314,5 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
-" " Powerline.
-" python from powerline.vim import setup as powerline_setup
-" python powerline_setup()
-" python del powerline_setup
-
 let g:airline_powerline_fonts = 1
+
