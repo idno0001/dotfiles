@@ -26,7 +26,8 @@ Bundle 'vim-scripts/tex.vim--Tanzler'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-commentary'
 Bundle 'vim-scripts/matchit.zip'
-Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/Rename'
 Bundle 'spiiph/vim-space'
 Bundle 'tpope/vim-surround'
@@ -314,3 +315,9 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+" " Powerline.
+" python from powerline.vim import setup as powerline_setup
+" python powerline_setup()
+" python del powerline_setup
+
+let g:airline_powerline_fonts = 1
