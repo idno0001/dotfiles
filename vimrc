@@ -314,5 +314,9 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+" Use modified powerline fonts for airline.
 let g:airline_powerline_fonts = 1
+
+" Do not warn about trailing whitespace in Airline.
+let g:airline_detect_whitespace=0
 
