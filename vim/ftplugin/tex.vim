@@ -53,7 +53,7 @@ call IMAP('Hoelder', 'H\"{o}lder', 'tex')
 call IMAP('Peigne', "Peign\\'{e}", 'tex')
 
 call IMAP('vc', '\vec{<++>}<++>', 'tex')
-call IMAP('htj', '\hat{\tau}_{\vec{j}<++>}<++>', 'tex')
+call IMAP('htj', '\hat{T}_{\vec{j}<++>}<++>', 'tex')
 
 " Defining and redefining various environments.
 let g:Tex_Env_lemma = "\\begin{lemma} \\label{lem:<++>}\<CR><++>\<CR>\\end{lemma}<++>"
