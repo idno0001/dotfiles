@@ -11,19 +11,12 @@ set iskeyword+=:
 " Do not conceal (sub|super)scripts.
 let g:tex_conceal="adgm"
 
-" Slightly modified version of vim-latex's SmartDots function takes into
-" account anton.sty, which loads amsmath (so that a \dots substitution
-" suffices).
+" Modified version of vim-latex's SmartDots function: I always use amsmath, so 
+" just use \dots!
 if g:Tex_SmartKeyDot
 	function! <SID>SmartDots()
-		if strpart(getline('.'), col('.')-3, 2) == '..' && 
-      \ g:Tex_package_detected =~ '\<amsmath\|ellipsis\|anton\>'
+		if strpart(getline('.'), col('.')-3, 2) == '..'
 			return "\<bs>\<bs>\\dots"
-		elseif synIDattr(synID(line('.'),col('.')-1,0),"name") =~ '^texMath'
-			\&& strpart(getline('.'), col('.')-3, 2) == '..' 
-			return "\<bs>\<bs>\\cdots"
-		elseif strpart(getline('.'), col('.')-3, 2) == '..' 
-			return "\<bs>\<bs>\\ldots"
 		else
 			return '.'
 		endif
