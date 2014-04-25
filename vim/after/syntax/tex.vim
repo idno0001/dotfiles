@@ -14,4 +14,5 @@ syn match texMathSymbol '\\specrad\>' contained conceal cchar=ρ
 syn match texMathSymbol '\\oponros\>' contained conceal cchar=Q
 syn match texMathSymbol '\\colon\>' contained conceal cchar=:
 syn match texMathSymbol '\\colonequals\>' contained conceal cchar=≔
+syn match texMathSymbol '\\veps\>' contained conceal cchar=ε
 

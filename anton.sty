@@ -52,6 +52,12 @@
 \@doGlossariesNoNumListfalse
 \DeclareOption{glossariesnonumberlist}{\@doGlossariesNoNumListtrue}
 
+% Use the braket package. If not loaded, we use macros that work in the same 
+% way as \abs and \norm.
+\newif\if@doBraket
+\@doBraketfalse
+\DeclareOption{braket}{\@doBrakettrue}
+
 % Add [biblatex] support.
 \newif\if@doBiblatex
 \@doBiblatexfalse
@@ -68,7 +74,9 @@
 \usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[stretch=10]{microtype}
-\usepackage{braket}
+\if@doBraket
+  \usepackage{braket}
+\fi
 \usepackage{upgreek}
 \usepackage{xparse}
 \usepackage{environ}
@@ -254,11 +262,7 @@
 \newcommand{\Lip}{\mathrm{Lip}}
 \DeclareMathOperator{\var}{var} % variation of a function
 \newcommand{\ft}[1]{\ensuremath{\hat{#1}}} % Fourier transform
-
-% Avoids inconsistent use of notation.
-\renewcommand{\subset}{\subseteq}
-\renewcommand{\supset}{\supseteq}
-\renewcommand{\tilde}[1]{\widetilde{#1}}
+\newcommand{\veps}{\ensuremath{\varepsilon}}
 
 \renewcommand{\vec}[1]{\mathbf{#1}}
 
@@ -302,6 +306,22 @@
 	  {{\left\lceil#3\right\rceil}}
     {{#2\lceil#3#2\rceil}}
 }
+
+\if@doBraket
+\else
+  % set
+  \NewDocumentCommand{\set}{s O{} m}{%
+    \IfBooleanTF{#1}
+	    {{\left\{#3\right\}}}
+      {{#2\{#3#2\}}}
+  }
+  % braket
+  \NewDocumentCommand{\braket}{s O{} m}{%
+    \IfBooleanTF{#1}
+	    {{\left\langle#3\right\rangle}}
+      {{#2\langle#3#2\rangle}}
+  }
+\fi
 
 % Labels for relation symbols.
 \newcommand{\refrel}[2]{\ensuremath{\stackrel{\text{#1}}}{#2}}
