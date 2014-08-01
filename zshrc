@@ -51,9 +51,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=".local/bin/:/home/anton/usr/local/texlive/2012/bin/x86_64-linux:/usr/lib/x86_64-linux-gnu/qt4/bin:/home/anton/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export MANPATH="/home/anton/usr/local/texlive/2012/texmf/doc/man:/usr/share/man:/usr/local/man:$MANPATH"
-export INFOPATH="/home/anton/usr/local/texlive/2012/texmf/doc/info:/usr/local/man:$INFOPATH"
+export PATH=".local/bin/:/usr/lib/x86_64-linux-gnu/qt4/bin:/home/anton/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export MANPATH="/usr/share/man:/usr/local/man:$MANPATH"
+export INFOPATH="/usr/local/man:$INFOPATH"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -76,7 +76,7 @@ bindkey "^[s" sudo-command-line
 alias g='gvim --remote-silent'
 
 # Suffix aliases.
-alias -s pdf=okular
+alias -s pdf=zathura
 alias -s tex=vim
 
 # Global aliases.
