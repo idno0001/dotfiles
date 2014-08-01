@@ -3,34 +3,36 @@ set nocompatible
 filetype off
 
 if has('win32')
-  set rtp+=$VIM/vimfiles/bundle/vundle/
+  set rtp+=$VIM/vimfiles/bundle/Vundle.vim
 else
-  set rtp+=~/.vim/bundle/vundle/
+  set rtp+=~/.vim/bundle/Vundle.vim
 endif
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
 
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'vim-scripts/Smart-Tabs'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
-Bundle 'sjl/gundo.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'jnurmine/Zenburn'
-" Bundle 'vim-scripts/tex.vim--Tanzler'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-commentary'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'bling/vim-airline'
-Bundle 'vim-scripts/Rename'
-Bundle 'spiiph/vim-space'
-Bundle 'tpope/vim-surround'
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'vim-scripts/Smart-Tabs'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'jnurmine/Zenburn'
+" Plugin 'vim-scripts/tex.vim--Tanzler'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-commentary'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'bling/vim-airline'
+Plugin 'vim-scripts/Rename'
+Plugin 'spiiph/vim-space'
+Plugin 'tpope/vim-surround'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+
+call vundle#end()
 
 " Latex-Suite-specific things.
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
