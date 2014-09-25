@@ -11,20 +11,6 @@ set iskeyword+=:
 " Do not conceal (sub|super)scripts.
 let g:tex_conceal="adgm"
 
-" Modified version of vim-latex's SmartDots function: I always use amsmath, so 
-" just use \dots!
-if g:Tex_SmartKeyDot
-	function! <SID>SmartDots()
-		if strpart(getline('.'), col('.')-3, 2) == '..'
-			return "\<bs>\<bs>\\dots"
-		else
-			return '.'
-		endif
-	endfunction 
-  inoremap <buffer> <silent> . <C-R>=<SID>SmartDots()<CR>
-endif
-
-
 " Various macros.
 call IMAP('IFF', 'if and only if', 'tex')
 call IMAP('MPT', 'measure-preserving transformation', 'tex')
@@ -46,6 +32,7 @@ call IMAP('Hoelder', 'H\"{o}lder', 'tex')
 call IMAP('Peigne', "Peign\\'{e}", 'tex')
 
 call IMAP('vc', '\vec{<++>}<++>', 'tex')
+call IMAP('ovc', '\overline{\vec{<++>}}_<++>', 'tex')
 call IMAP('htj', '\hat{T}_{\vec{j}<++>}<++>', 'tex')
 
 " Defining and redefining various environments.
@@ -56,4 +43,7 @@ let g:Tex_Env_equation = "\\begin{equation} \\label{eqn:<++>}\<CR><++>\<CR>\\end
 
 " Delete a surrounding attribute/macro.
 nmap <silent> dsa ds}dF\
+
+let g:Tex_SmartKeyDot=0
+call IMAP('...', '\dots', 'tex')
 
