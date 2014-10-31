@@ -173,7 +173,11 @@
 	\usepackage[nonumberlist]{glossaries}
 \fi
 
-\usepackage[capitalise]{cleveref}
+% Capitalise chapter and theorem-like names, but do not capitalise section 
+% names.
+\usepackage[capitalise,noabbrev]{cleveref}
+\Crefname{section}{Section}{Sections}
+\crefname{section}{section}{sections}
 
 % Inkscape graphics. Compiles new diagram if svg file changes.
 % Use \includesvg to insert images (exclude file extension), with optional
@@ -198,10 +202,12 @@
 \theoremstyle{nonumberbreak}
 \newtheorem{remarks}{Remarks}
 \theoremstyle{plain}
-\newtheorem{lemma}{Lemma}
-\newtheorem{proposition}{Proposition}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
+\newcounter{result}
+\numberwithin{result}{subsection}
+\newtheorem{lemma}[result]{Lemma}
+\newtheorem{proposition}[result]{Proposition}
+\newtheorem{theorem}[result]{Theorem}
+\newtheorem{corollary}[result]{Corollary}
 \theoremstyle{nonumberplain}
 \newtheorem{definition}{Definition}
 \newtheorem{example}{Example}
@@ -214,6 +220,10 @@
 \theoremheaderfont{\scshape}\theorembodyfont{\upshape}
 \theoremsymbol{\ensuremath{\square}}
 \newtheorem{proof}{Proof}
+
+% Equation numbering.
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection--\arabic{equation}}
 
 % Redefine lists to use roman numerals.
 \setlist[enumerate,1]{label=(\roman*), ref=(\roman*)}
@@ -267,6 +277,12 @@
 
 \renewcommand{\vec}[1]{\mathbf{#1}}
 
+% Fix spacing around \left ... \right.
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
 % \relmiddle is like \middle, but gives the same spacing as \mid. I don't
 % use this anymore because \Set{.} works well.
 \newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
@@ -276,7 +292,7 @@
 
 % Triple verts for |||.||| norms. \left \right doesn't work.
 \makeatletter
-\def\@tvsp{\mathchoice{{}\mkern-4.5mu}{{}\mkern-4.5mu}{{}\mkern-2.5mu}{}}
+\def\@tvsp{\mathchoice{{}\mkern-2.5mu}{{}\mkern-2.5mu}{{}\mkern-0.5mu}{}}
 \def\ltrivert{\left\lvert\@tvsp\left\lvert\@tvsp\left\lvert}
 \def\rtrivert{\right\rvert\@tvsp\right\rvert\@tvsp\right\rvert}
 \makeatother
