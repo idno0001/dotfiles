@@ -290,15 +290,15 @@
 \newcommand{\seedot}{\mathrel{}\cdot\mathrel{}}
 \newcommand{\midcolon}{\,:\,}
 
-% Triple verts for |||.||| norms. \left \right doesn't work.
+% Various paired delimiters using xparse.
+% trinorm |||.|||
 \makeatletter
 \def\@tvsp{\mathchoice{{}\mkern-2.5mu}{{}\mkern-2.5mu}{{}\mkern-0.5mu}{}}
-\def\ltrivert{\left\lvert\@tvsp\left\lvert\@tvsp\left\lvert}
-\def\rtrivert{\right\rvert\@tvsp\right\rvert\@tvsp\right\rvert}
-\makeatother
-\newcommand{\trinorm}[1]{\ltrivert #1 \rtrivert}
-
-% Various paired delimiters using xparse.
+\NewDocumentCommand{\trinorm}{s O{} m}{%
+  \IfBooleanTF{#1} % starred
+  	{{\left\lvert\@tvsp\left\lvert\@tvsp\left\lvert#3\right\rvert\@tvsp\right\rvert\@tvsp\right\rvert}}
+    {{#2\lvert\@tvsp#2\lvert\@tvsp#2\lvert#3#2\rvert\@tvsp#2\rvert\@tvsp#2\rvert}}
+}
 % abs
 \NewDocumentCommand{\abs}{s O{} m}{%
   \IfBooleanTF{#1} % starred
