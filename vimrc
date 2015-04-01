@@ -31,6 +31,8 @@ Plugin 'vim-scripts/Rename'
 Plugin 'spiiph/vim-space'
 Plugin 'tpope/vim-surround'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'justinmk/vim-ipmotion'
 
 call vundle#end()
 
@@ -321,4 +323,7 @@ let g:airline_powerline_fonts = 1
 
 " Do not warn about trailing whitespace in Airline.
 let g:airline_detect_whitespace=0
+
+" Do not double space between sentences.
+set nojoinspaces
 
