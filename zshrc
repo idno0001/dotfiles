@@ -75,8 +75,13 @@ bindkey "^[s" sudo-command-line
 # Reuse instance of gvim.
 alias g='gvim --remote-silent'
 
+# Run things in the background.
+background() {
+  "$@" &
+}
+
 # Suffix aliases.
-alias -s pdf=zathura
+alias -s {djvu,pdf}='background zathura'
 alias -s tex=vim
 
 # Global aliases.
