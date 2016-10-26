@@ -1,0 +1,4 @@
+" Map leader for macro shortcuts.
+let g:Tex_Leader = ","
+let g:Tex_Leader2 = "`"
+

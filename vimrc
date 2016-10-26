@@ -1,7 +1,7 @@
-" Use vim (not vi) settings.
-set nocompatible
-filetype off
+set nocompatible    " use vim settings
 
+" load vundle
+filetype off
 if has('win32')
   set rtp+=$VIM/vimfiles/bundle/Vundle.vim
 else
@@ -10,81 +10,46 @@ endif
 call vundle#begin()
 
 " let Vundle manage Vundle
-" required! 
 Plugin 'gmarik/Vundle.vim'
 
-" My Bundles here:
+" tpope bundles:
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-speeddating'
 
-Plugin 'nanotech/jellybeans.vim'
+" vim-scripts GitHub bundles:
 Plugin 'vim-scripts/Smart-Tabs'
+" Plugin 'vim-scripts/tex.vim--Tanzler'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/Rename'
+
+" other bundles:
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-latex/vim-latex'
-Plugin 'sjl/gundo.vim'
-Plugin 'tpope/vim-fugitive'
+Plugin 'mbbill/undotree'
 Plugin 'jnurmine/Zenburn'
-" Plugin 'vim-scripts/tex.vim--Tanzler'
 Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-commentary'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'bling/vim-airline'
-Plugin 'vim-scripts/Rename'
+Plugin 'itchyny/lightline.vim'
 Plugin 'spiiph/vim-space'
-Plugin 'tpope/vim-surround'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'tpope/vim-unimpaired'
 Plugin 'justinmk/vim-ipmotion'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+" Plugin 'jalvesaq/R-Vim-runtime'
+Plugin 'jceb/vim-orgmode'
 
 call vundle#end()
 
-" Latex-Suite-specific things.
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
+" lightline options
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
 
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-if has('win32')
-  set shellslash
-endif
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a single file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-
-" Stop autofolding in Latex-Suite.
-let g:Tex_AutoFolding = 0
-
-" Default to PDF.
-" let g:Tex_DefaultTargetFormat = 'pdf'
-
-" Use okular for viewing things.
-" let g:Tex_ViewRule_ps = 'evince'
-" let g:Tex_ViewRule_pdf = 'evince'
-" let g:Tex_ViewRule_dvi = 'evince'
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats = 'dvi,pdf'
-let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -shell-escape -interaction=nonstopmode $*'
-
-if has('win32')
-  let g:Tex_ViewRule_pdf = 'SumatraPDF -reuse-instance'
-else
-  if executable('evince')
-    let g:Tex_ViewRule_ps = 'evince'
-    let g:Tex_ViewRule_pdf = 'evince'
-    let g:Tex_ViewRule_dvi = 'evince'
-  endif
-endif
-
-
-" End of Latex-Suite-specific things.
+colorscheme solarized       " solarized light
+syntax enable               " enable syntax processing
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -188,11 +153,16 @@ nmap <leader>v :tabedit $MYVIMRC<CR>
 
 " Font, window size and colour scheme.
 if has('gui_running')
-  set lines=55 columns=85
+  " set lines=55 columns=85
   if has('win32')
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h8
-  else
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
+  elseif has("unix")
+    let s:uname = substitute(system("uname -s"), '\n', '', '')
+    if s:uname == "Darwin"
+      set guifont=Menlo
+    else
+      set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
+    endif
   endif
   let Powerline_symbols='fancy'
   
@@ -201,10 +171,12 @@ if has('gui_running')
   set guioptions-=m
 endif
 
-colorscheme zenburn
-
-" Use tabs for indentation only, width = 2.
-set et ci pi sts=2 sw=2 ts=2
+set expandtab        " tabs are spaces
+set copyindent       " copies the indentation of the existing line
+set preserveindent   " preserve the indentation of the line being edited
+set tabstop=2        " number of visual spaces per tab
+set softtabstop=2    " number of spaces in a tab when editing
+set shiftwidth=2     " number of spaces for each step of autoindent
 
 " Use SuperRetab to convert spaces to tabs (inverse of standard vim retab).
 " Usage: Visually select the lines that you want to retab, then enter
@@ -235,14 +207,32 @@ let g:netrw_preview=1 " preview window shown in a vertically split
 
 " Reformat the hard linebreaks in a paragraph when changes are made. (Screws a
 " lot of things up when it's not just raw text.)
-" :set fo+=a
+set fo+=wan1cqt
 
 " Toggle spell checking with `,s'.
 nmap <silent> <leader>s :set spell!<CR>
 set spelllang=en_gb
 
 " Map `,g' to gundo.
-nnoremap <leader>g :GundoToggle<CR>
+" nnoremap <leader>g :GundoToggle<CR>
+
+" ,g toggles the undo tree.
+nnoremap <leader>g :UndotreeToggle<CR>
+
+" Persistent undo: http://stackoverflow.com/a/22676189/1262569
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
 
 " Unix like auto-completion
 set wildmenu
@@ -259,10 +249,16 @@ set smartcase
 
 " Soft wrap long lines, navigate them using the j and k keys.
 setlocal wrap nolist linebreak breakat=\ 
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
+vmap <D-j> gj
+vmap <D-k> gk
+vmap <D-4> g$
+vmap <D-6> g^
+vmap <D-0> g^
+nmap <D-j> gj
+nmap <D-k> gk
+nmap <D-4> g$
+nmap <D-6> g^
+nmap <D-0> g^
 
 " Disable the arrow keys.
 map <up> <nop>
@@ -274,13 +270,6 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" Automatically insert line breaks for tex files.
-" au BufEnter *.tex setl tx ts=2 sw=2 fo+=wa
-
-" Indent options for tex files.
-" let g:tex_indent_brace = 1
-" let g:tex_indent_items = 1
-
 " Soft wrap keybinding.
 command! -nargs=* Wrap set wrap linebreak nolist
 
@@ -290,11 +279,6 @@ set formatprg=par\ -w78q
 " Line endings.
 set fileformat=unix
 set fileformats=unix,dos
-
-" Conceal. Colour scheme is for Zenburn. Do not conceal (sub|super)scripts.
-set cole=2
-hi Conceal guibg=#3f3f3f guifg=#dcdccc font='DejaVu Sans Mono'
-" let g:tex_conceal="adgm"
 
 " Unicode support.
 if has("multi_byte")
@@ -326,4 +310,11 @@ let g:airline_detect_whitespace=0
 
 " Do not double space between sentences.
 set nojoinspaces
+
+" Rmd uses markdown syntax highlighting.
+" au BufNewFile,BufRead *.Rmd set filetype=markdown
+
+" Comment string for Rmd files.
+autocmd FileType Rmd setlocal commentstring=#\ %s
+
 

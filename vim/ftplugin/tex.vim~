@@ -195,3 +195,5 @@ set fo=
 " Indentation
 set tw=0 ts=2 sw=2
 
+" Change the TeX leader to ,
+let g:TeX_Leader=","
