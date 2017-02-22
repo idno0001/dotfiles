@@ -40,6 +40,7 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 " Plugin 'jalvesaq/R-Vim-runtime'
 Plugin 'jceb/vim-orgmode'
+Plugin 'jalvesaq/Nvim-R'
 
 call vundle#end()
 
