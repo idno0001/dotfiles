@@ -45,14 +45,15 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(extract git sudo vi-mode)
+plugins=(extract git sudo vi-mode brew macports tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=".local/bin/:/usr/lib/x86_64-linux-gnu/qt4/bin:/home/anton/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export MANPATH="/usr/share/man:/usr/local/man:$MANPATH"
+#export PATH="$HOME/.rbenv/shims:/opt/local/bin:/opt/local/sbin:/Users/anton/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:/opt/local/bin:/opt/local/sbin:/Users/anton/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
+export MANPATH="/opt/local/share/man:/usr/share/man:/usr/local/man:$MANPATH"
 export INFOPATH="/usr/local/man:$INFOPATH"
 
 # Preferred editor for local and remote sessions
@@ -95,4 +96,11 @@ setopt extendedglob
 # History completion.
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
+
+source /Users/achiu/zaw/zaw.zsh
+
+eval "$(rbenv init -)"
+
+# Tunnel into troodon and attach an existing tmux session.
+alias troodon='ssh -X troodon -t "tmux -CC attach || tmux -CC"'
 
