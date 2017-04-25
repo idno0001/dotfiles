@@ -317,6 +317,9 @@ let g:airline_detect_whitespace=0
 " Do not double space between sentences.
 set nojoinspaces
 
+" List all buffers and populate the prompt for buffer switching.
+nnoremap gb :ls<CR>:b<Space>
+
 " Rmd uses markdown syntax highlighting.
 " au BufNewFile,BufRead *.Rmd set filetype=markdown
 
