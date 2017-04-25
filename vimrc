@@ -41,6 +41,11 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 " Plugin 'jalvesaq/R-Vim-runtime'
 Plugin 'jceb/vim-orgmode'
 Plugin 'jalvesaq/Nvim-R'
+Plugin 'git@github.com:vimwiki/vimwiki.git'
+Plugin 'tbabej/taskwiki'
+Plugin 'powerman/vim-plugin-AnsiEsc'
+Plugin 'majutsushi/tagbar'
+Plugin 'farseer90718/vim-taskwarrior'
 
 call vundle#end()
 
@@ -160,7 +165,7 @@ if has('gui_running')
   elseif has("unix")
     let s:uname = substitute(system("uname -s"), '\n', '', '')
     if s:uname == "Darwin"
-      set guifont=Menlo
+      set guifont=Menlo:h12
     else
       set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
     endif
@@ -318,4 +323,10 @@ set nojoinspaces
 " Comment string for Rmd files.
 autocmd FileType Rmd setlocal commentstring=#\ %s
 
+" R script settings
+let maplocalleader = ","
+vmap <Space> <Plug>RDSendSelection
+nmap <Space> <Plug>RDSendLine
+let vimrplugin_applescript=0
+let vimrplugin_vsplit=1
 
