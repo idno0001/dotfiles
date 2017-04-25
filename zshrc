@@ -51,8 +51,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-#export PATH="$HOME/.rbenv/shims:/opt/local/bin:/opt/local/sbin:/Users/anton/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:/opt/local/bin:/opt/local/sbin:/Users/anton/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
+#export PATH="$HOME/.rbenv/shims:/opt/local/bin:/opt/local/sbin:/Users/achiu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:/opt/local/bin:/opt/local/sbin:/Users/achiu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
 export MANPATH="/opt/local/share/man:/usr/share/man:/usr/local/man:$MANPATH"
 export INFOPATH="/usr/local/man:$INFOPATH"
 
