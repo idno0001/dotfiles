@@ -45,14 +45,13 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(extract git sudo vi-mode brew macports tmuxinator)
+plugins=(extract git sudo vi-mode brew)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-#export PATH="$HOME/.rbenv/shims:/opt/local/bin:/opt/local/sbin:/Users/achiu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:/opt/local/bin:/opt/local/sbin:/Users/achiu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
+export PATH="/usr/local/opt/libxml2/bin:$HOME/.rbenv/bin:/opt/local/bin:/opt/local/sbin:/Users/chiua01/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
 export MANPATH="/opt/local/share/man:/usr/share/man:/usr/local/man:$MANPATH"
 export INFOPATH="/usr/local/man:$INFOPATH"
 
@@ -82,13 +81,14 @@ background() {
 }
 
 # Suffix aliases.
-alias -s {djvu,pdf}='background zathura'
 alias -s tex=vim
 
 # Global aliases.
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
+
+alias pip=pip3
 
 # Extended globbing.
 setopt extendedglob
@@ -97,10 +97,29 @@ setopt extendedglob
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
 
-source /Users/achiu/zaw/zaw.zsh
+source /Users/chiua01/zaw/zaw.zsh
 
 eval "$(rbenv init -)"
 
-# Tunnel into troodon and attach an existing tmux session.
-alias troodon='ssh -X troodon -t "tmux -CC attach || tmux -CC"'
+# Edit my 'did' file. https://theptrk.com/2018/07/11/did-txt-file/
+alias did="vim +'normal Go' +'r!date' ~/did.txt"
+
+# export PATH="$HOME/anaconda3/bin:$PATH"  # commented out by conda initialize
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/chiua01/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/chiua01/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/chiua01/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/chiua01/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -25,3 +25,6 @@ set visible-stats on
 # Binds C-e C-w to kill words backwords, treating slashes as boundaries.
 "\C-e\C-w": unix-filename-rubout
 
+# vi keybindings
+set editing-mode vi
+
