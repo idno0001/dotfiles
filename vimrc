@@ -212,6 +212,7 @@ let g:netrw_preview=1 " preview window shown in a vertically split
 " Reformat the hard linebreaks in a paragraph when changes are made. (Screws a
 " lot of things up when it's not just raw text.)
 set fo+=wan1cqt
+set autoindent
 
 " Toggle spell checking with `,s'.
 nmap <silent> <leader>s :set spell!<CR>
@@ -330,4 +331,5 @@ vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
 let vimrplugin_applescript=0
 let vimrplugin_vsplit=1
+let R_assign=2
 

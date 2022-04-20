@@ -45,14 +45,13 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(extract git sudo vi-mode brew macports tmuxinator)
+plugins=(extract git sudo vi-mode brew)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-#export PATH="$HOME/.rbenv/shims:/opt/local/bin:/opt/local/sbin:/Users/achiu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:/opt/local/bin:/opt/local/sbin:/Users/achiu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
+export PATH="/usr/local/opt/libxml2/bin:$HOME/.rbenv/bin:/opt/local/bin:/opt/local/sbin:/Users/chiua01/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:$PATH"
 export MANPATH="/opt/local/share/man:/usr/share/man:/usr/local/man:$MANPATH"
 export INFOPATH="/usr/local/man:$INFOPATH"
 
@@ -82,13 +81,14 @@ background() {
 }
 
 # Suffix aliases.
-alias -s {djvu,pdf}='background zathura'
 alias -s tex=vim
 
 # Global aliases.
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
+
+alias pip=pip3
 
 # Extended globbing.
 setopt extendedglob
@@ -103,3 +103,4 @@ eval "$(rbenv init -)"
 
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
+
