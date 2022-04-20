@@ -42,10 +42,8 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'jceb/vim-orgmode'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'git@github.com:vimwiki/vimwiki.git'
-Plugin 'tbabej/taskwiki'
 Plugin 'powerman/vim-plugin-AnsiEsc'
 Plugin 'majutsushi/tagbar'
-Plugin 'farseer90718/vim-taskwarrior'
 
 call vundle#end()
 
@@ -167,7 +165,7 @@ if has('gui_running')
     if s:uname == "Darwin"
       set guifont=Menlo:h12
     else
-      set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 8
+      set guifont=DejaVu\ Sans\ Mono\ 10
     endif
   endif
   let Powerline_symbols='fancy'

@@ -97,10 +97,9 @@ setopt extendedglob
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
 
-source /Users/achiu/zaw/zaw.zsh
+source ~/zaw/zaw.zsh
 
 eval "$(rbenv init -)"
 
-# Tunnel into troodon and attach an existing tmux session.
-alias troodon='ssh -X troodon -t "tmux -CC attach || tmux -CC"'
-
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
